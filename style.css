@@ -1,0 +1,50 @@
+body {
+    margin: 20pt;
+}
+
+h1 {
+    text-align: left;
+    font-family: semplicitapro, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30pt;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: "IBM Plex Mono";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 8pt;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color:black
+}
+
+a:visited {
+    color: black
+}
+
+a:active {
+    color:black
+}
+
+.navigation {
+    font-size: 8pt;
+    font-family: semplicitapro, sans-serif;
+    font-weight: 400;
+
+}
+
+.project:hover {
+    font-weight: 600;
+}
+
+.about:hover {
+    font-weight: 600;
+}
