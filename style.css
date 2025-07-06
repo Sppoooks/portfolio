@@ -1,5 +1,5 @@
 body {
-    margin: 20pt;
+    margin: 15pt;
 }
 
 h1 {
@@ -8,7 +8,12 @@ h1 {
     font-style: normal;
     font-weight: 400;
     font-size: 30pt;
+    margin-top: 0px;
     margin-bottom: 10px;
+}
+
+img {
+    width: 100%;
 }
 
 p {
@@ -16,6 +21,7 @@ p {
     font-weight: 400;
     font-style: normal;
     font-size: 8pt;
+    margin: 0;
 }
 
 a {
@@ -34,17 +40,88 @@ a:active {
     color:black
 }
 
-.navigation {
+ul {
+    list-style-type: none;
+    margin: 0pt;
+    padding: 0pt;
+    font-family: "IBM Plex Mono";
+    font-size: 8pt;
+}
+
+.homepage_container {
+    display: grid;
+    margin: 0pt;
+    grid-template-columns: 230px auto;
+}
+
+.homepage_header {
+    grid-column: 1 / span 2;
+}
+
+.project_button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 8pt;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.project_button:hover, .project_button:focus {
+    font-weight: 600;
+}
+
+.homepage_project {
+    position: relative;
+    display: inline-block;
+}
+
+.project_dropdown_content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.project_dropdown_content a {
+    display: block;
+}
+
+.homepage_navigation {
     font-size: 8pt;
     font-family: semplicitapro, sans-serif;
     font-weight: 400;
-
 }
 
-.project:hover {
+.homepage_project:hover {
     font-weight: 600;
 }
 
-.about:hover {
+.homepage_about:hover {
     font-weight: 600;
+}
+
+.show {
+    display: block;
+}
+
+.fade-in-image {
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-zoom-animation: fadeIn 3s;
+}
+
+.content_container {
+    position: static;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
 }

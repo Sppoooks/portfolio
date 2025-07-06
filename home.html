@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="style.css">
 
         <!--Linking javascript script file-->
-        <script src="scripts.js"></script>
+        <script defer src="scripts.js"></script>
 
         <!--embedding IMB plex mono font from google fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,26 +18,36 @@
     </head>
 
     <body>
-        
-        <div class="homepage_header">
-            <h1>
-                PORTFOLIO
-            </h1>
-        </div>
+        <script src="scripts.js"></script>
+        <div class="homepage_container">
+            <header class="homepage_header">
+                <h1>
+                    PORTFOLIO
+                </h1>
+            </header>
 
-        <div class="navigation">
-            <div class="project" id="project">
-                PROJECTS
+            <nav class="homepage_navigation">
+
+                <div class="homepage_project" id="homepage_project">
+                    <button onclick="dropdown_func()" class="project_button">PROJECTS</button>
+
+                        <div class="project_dropdown_content" id="projet_dropdown_content">
+                            <a href="project_1.html">OBJECT DETECTION</a>
+                            <a href="project_2.html">PROJECT 2</a>
+                        </div>
+
+                </div>
+
+                <div class="homepage_about" id="homepage_about">
+                    <a href="about.html">ABOUT ME</a>
+                </div>
+
+            </nav>
+            
+            <div class="content_container">
+                <a href="project1.html"><img src="images/room2.svg" alt="image of a black square" class="fade-in-image"></a>
             </div>
-
-            <div class="about" id="about">
-                <a href="about.html">ABOUT ME</a>
-            </div>
-
         </div>
         
-        <p>
-            This is a test sentence for the font IBM Plex Mono
-        </p>
     </body>
 </html>
