@@ -74,16 +74,18 @@ ul {
 
 .homepage_project {
     position: relative;
-    display: inline-block;
+    display: block;
 }
 
-.project_dropdown_content {
-    display: none;
-    position: absolute;
-    z-index: 1;
+.project_dropdown_content{
+    margin-left: 5%;
 }
 
-.project_dropdown_content a {
+.project_dropdown_content a:hover {
+    font-weight: 600;
+}
+
+.project_dropdown_content a{
     display: block;
 }
 
@@ -91,10 +93,6 @@ ul {
     font-size: 8pt;
     font-family: semplicitapro, sans-serif;
     font-weight: 400;
-}
-
-.homepage_project:hover {
-    font-weight: 600;
 }
 
 .homepage_about:hover {
