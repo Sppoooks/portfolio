@@ -14,6 +14,8 @@ h1 {
 
 img {
     width: 100%;
+    display: block;
+    margin: 0;
 }
 
 p {
@@ -68,7 +70,7 @@ ul {
     display: inline-block;
 }
 
-.project_button:hover, .project_button:focus {
+.project_button:hover, .project_button:active{
     font-weight: 600;
 }
 
@@ -78,7 +80,8 @@ ul {
 }
 
 .project_dropdown_content{
-    margin-left: 5%;
+    margin: 2% 0 5% 5%;
+    display: none;
 }
 
 .project_dropdown_content a:hover {
@@ -88,6 +91,7 @@ ul {
 .project_dropdown_content a{
     display: block;
 }
+
 
 .homepage_navigation {
     font-size: 8pt;
