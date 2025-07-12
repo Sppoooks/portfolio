@@ -30,15 +30,7 @@ a {
     text-decoration: none;
 }
 
-a:link {
-    color:black
-}
-
-a:visited {
-    color: black
-}
-
-a:active {
+a:link, a:visited, a:active {
     color:black
 }
 
@@ -70,7 +62,11 @@ ul {
     display: inline-block;
 }
 
-.project_button:hover, .project_button:active{
+.project_button_click {
+    font-weight: 600;
+}
+
+.project_button:hover{
     font-weight: 600;
 }
 
@@ -80,8 +76,10 @@ ul {
 }
 
 .project_dropdown_content{
-    margin: 2% 0 5% 5%;
-    display: none;
+    margin-left: 5%;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.5s ease-out;
 }
 
 .project_dropdown_content a:hover {
@@ -92,11 +90,14 @@ ul {
     display: block;
 }
 
-
 .homepage_navigation {
     font-size: 8pt;
     font-family: semplicitapro, sans-serif;
     font-weight: 400;
+}
+
+.homepage_about {
+    transition: transform 0.5s;
 }
 
 .homepage_about:hover {
@@ -104,7 +105,7 @@ ul {
 }
 
 .show {
-    display: block;
+    max-height: 200px;
 }
 
 .fade-in-image {
