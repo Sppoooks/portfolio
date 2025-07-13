@@ -57,7 +57,7 @@ ul {
     border: none;
     background-color: transparent;
     font-weight: 400;
-    font-size: 8pt;
+    font-size: 0.625rem;
     cursor: pointer;
     display: inline-block;
 }
@@ -77,9 +77,10 @@ ul {
 
 .project_dropdown_content{
     margin-left: 5%;
+    margin-bottom: 0;
     max-height: 0px;
     overflow: hidden;
-    transition: 0.5s ease-out;
+    transition: 0.5s;
 }
 
 .project_dropdown_content a:hover {
@@ -91,13 +92,9 @@ ul {
 }
 
 .homepage_navigation {
-    font-size: 8pt;
+    font-size: 0.625rem;
     font-family: semplicitapro, sans-serif;
     font-weight: 400;
-}
-
-.homepage_about {
-    transition: transform 0.5s;
 }
 
 .homepage_about:hover {
@@ -106,6 +103,8 @@ ul {
 
 .show {
     max-height: 200px;
+    margin-bottom: 5%;
+    margin-top: 2%;
 }
 
 .fade-in-image {
@@ -127,4 +126,13 @@ ul {
     100% {
         opacity: 100%;
     }
+}
+
+.about_container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.about_header {
+    grid-column: 1 / span 2;
 }
