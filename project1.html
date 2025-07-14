@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initla-scale=1"/>
-        <title>Tuoba's Portfolio</title>
+
+        <title>OBJECT DETECTION</title>
 
         <!--linking css style sheet-->
         <link rel="stylesheet" href="style.css">
@@ -15,6 +16,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+        <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
     </head>
     <body>
         <div class="project1-nav-bar">
@@ -22,54 +27,185 @@
                 OBJECT DETECTION
             </h1>
         </div>
+        <div class="project1-body-container">
+            <div class="project1-content">
+                <h2>
+                    Introduction
+                </h2>
+                <p>
+                    I wanted to create a bot that helps me automatically mine ores in the french MMO Dofus. The idea to create a bot for automating monotonous processes is not novel, however I saw this as great project to learn computer vision and improve my programming knowledge. A tutorial made by <a href="https://www.youtube.com/@LearnCodeByGaming" target="_blank" class="project1-hyperlink">Learn Code by Gaming</a> was followed to help create this bot, however the game used for the tutorial was Albion Online. The code written for this bot deviates substantially from the one written in the tutorial.
+                </p>
 
-        <div class="project1-content">
-            <h2>
-                Introduction
-            </h2>
-            <p>
-                I wanted to create a bot that helps me automatically mine ores in the french MMO Dofus. The idea to create a bot for automating monotonous processes is not novel, however I saw this as great project to learn computer vision and improve my programming knowledge. A tutorial made by <a href="https://www.youtube.com/@LearnCodeByGaming" target="_blank" class="project1-hyperlink">Learn Code by Gaming</a> was followed to help create this bot, however the game used for the tutorial was Albion Online. The code written for this bot deviates substantially from the one written in the tutorial.
-            </p>
+                <h2>
+                    Aim
+                </h2>
+                <p>
+                    The purpose of this bot is to detect all the <em>minable</em> ores on screen and mine them completely autonomously. The user requirement is only to start the bot and bring the window of interest to the front.
+                </p>
 
-            <h2>
-                Aim
-            </h2>
-            <p>
-                The purpose of this bot is to detect all the <em>minable</em> ores on screen and mine them completely autonomously. The user requirement is only to start the bot and bring the window of interest to the front.
-            </p>
+                <h2>
+                    Method
+                </h2>
+                <p>
+                    The main method utilised for this bot is called template matching using the OpenCV module in python. Another essential method for the code to work which is heavily utilised is multi threading. These methods will be explored in the following sections.
+                </p>
 
-            <h2>
-                Method
-            </h2>
-            <p>
-                The main method utilised for this bot is called template matching using the OpenCV module in python. Another essential method for the code to work which is heavily utilised is multi threading. These methods will be explored in the following sections.
-            </p>
+                <h2>
+                    Template Matching
+                </h2>
+                <p>
+                    Template matching is a method for searching and finding the location of a template image in a larger image. It slides the template over the input image and compares the template and patch of input image under the template image (Description taken from the OpenCV <a href="https://docs.opencv.org/4.x/d4/dc6/tutorial_py_template_matching.html" target="_blank" class="project1-hyperlink">documentation</a>).
+                    <br>
+                    <br>
+                    The function in OpenCV is called using:
 
-            <h2>
-                Template Matching
-            </h2>
-            <p>
-                Template matching is a method for searching and finding the location of a template image in a larger image. It slides the template over the input image and compares the template and patch of input image under the template image (Description taken from the OpenCV <a href="https://docs.opencv.org/4.x/d4/dc6/tutorial_py_template_matching.html" target="_blank" class="project1-hyperlink">documentation</a>).
+                    <code>
+                        result = cv2.matchTemplate(img,temp,method)
+                    </code>
+                    
+                    The function takes 3 inputs:
+                </p>
+
+                <ul>
+                    <li>img: The image used to slide the template.</li>
+                    <li>temp: The template image</li>
+                    <li>method: The method used to calculate the confidence values c.</li>
+                </ul>
+                <p>
+                There are 6 methods given by OpenCV. Depending on the application, one method may provide better results. The following table illustrates the algorithm behind the methods (taken from the OpenCV <a href="https://docs.opencv.org/4.x/df/dfb/group__imgproc__object.html#ga586ebfb0a7fb604b35a23d85391329be" class="project1-hyperlink" target="_blank">documentation</a>).
                 <br>
                 <br>
-                The function in OpenCV is called using:
+                $$R(x,y)=\sum_{x',y'}^{}(T'(x',y')-I'(x+x',y+y'))^2$$
+                </p>
+                <table>
+                    <tr>
+                        <th>Template Match Methods</th>
+                        <th>Formula</th>
+                    </tr>
+                    <tr>
+                        <td>TM_SQDIFF</td>
+                        <td>$$R(x,y)=\sum_{x',y'}^{}(T(x',y')-I(x+x',y+y'))^2$$</td>
+                    </tr>
+                    <tr>
+                        <td>TM_SQDIFF_NORMED</td>
+                        <td>$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')-I(x+x',y+y'))^2}{\sum_{x',y'}^{}T(x','y)^2\cdot \sum_{x',y'}^{}I(x+x',y+y')^2}$$</td>
+                    </tr>
+                    <tr>
+                        <td>TM_CCORR</td>
+                        <td>$$R(x,y)=\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))$$</td>
+                    </tr>
+                    <tr>
+                        <td>TM_CCORR_NORMED</td>
+                        <td>$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))}{\sum_{x',y'}^{}T(x','y)^2\cdot \sum_{x',y'}^{}I(x+x',y+y')^2}$$</td>
+                    </tr>
+                    <tr>
+                        <td>TM_CCOEFF</td>
+                        <td>$$R(x,y)=\sum_{x',y'}^{}(T'(x',y')\cdot I'(x+x',y+y'))^2$$</td>
+                    </tr>
+                    <tr>
+                        <td>TM_CCOEFF_NORMED</td>
+                        <td>$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))}{\sum_{x',y'}^{}T'(x','y)^2\cdot \sum_{x',y'}^{}I'(x+x',y+y')^2}$$</td>
+                    </tr>
+                </table>
+                <p>
+                    <br>
+                    I have found that TM_CCOEFF_NORMED worked the best for my specific use case. Other methods have returned a black screen or the function returned many false positives.
+                    <br>
+                    <br>
+                    The `cv.matchTemplate` function returns a result matrix containing the confidence values, $c$, based on the method used. The result matrix $R$ is 2-Dimensional and has the same size as the image used for processing. The rows and columns of the result matrix dictate the $x$ and $y$ position of the confidence value on the image.
+                    <br>
+                    $$\begin{align}
+                    R_{y\times x}=\begin{bmatrix}
+                    c_{11} & c_{12} & \dots & c_{1x} \\
+                    c_{21} & c_{22} & \dots & c_{2x} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    c_{y1} & c_{y2} & \dots & c_{yx}
+                    \end{bmatrix} &  & c \in \mathbb{R}^+, 0\leq c \leq 1
+                    \end{align}$$
+                    <br>
+                    Once the result matrix obtained, the locations of the best matches can be determined.
+                </p>
+                <img src="images/Screenshot.png" alt="Image of game" class="project1-image">
+                <p>
+                    To help illustrate the process of template matching, an example screenshot is show below and passed through the template matching algorithm.
+                </p>
+                <img src="images/rock.png" alt="game ore" width="50px" class="project1-image" id="project1-rock-img">
+                <p>
+                    The image used as the template is a cropped image of the ore obtained from the screenshot.
+                </p>
+                <img src="images/result.png" alt="matching template result" class="project1-image">
+                <p>
+                    The output of the template matching algorithm is saved into the result matrix and each confidence value is converted into pixel brightness. The confidence value is proportional to the brightness of the pixel, therefore the brighter a pixel is, the more likely that area of the image contains the template. This is displayed in the grayscale image shown above. The bright spots indicate a high probability of matching at that specific location.
+                    <br>
+                    <br>
+                    It is important to note that the confidence values range between 0 and 1, due to various environmental conditions such as lighting or objects in the foreground the template might not exactly match and return a confidence value lower than that of other matches. To catch this, a threshold value is created and adjusted through experimentation.
+                </p>
+                <h2>
+                    Window Capture
+                </h2>
+                <p>
+                    Creating an effective way to screen capture at a decent fps is simple if we are simply talking about grabbing the entire screen. Python modules such as mss and pyautogui allow for efficient screen capture as those modules are optimised for speed. The method utilised in this bot is to call the win32 API directly. Faster than pyautogui but slower than mss, this method allows for a somewhat efficient screen capture while providing another key benefit. Calling the windows API allows for the capturing of specific active windows.
+                    <br>
+                    <br>
+                    To start screen capturing with the win32 API, it is first important to understand some of the basics of the Windows OS. An application window is called a <a href="https://learn.microsoft.com/en-us/windows/win32/gdi/about-device-contexts" class="project1-hyperlink">Device Context</a> (DC), a DC is a structure that defines a set of graphic objects and their associated attributes, and the graphic modes that affect the output.
+                    <br>
+                    <br>
+                    The Windows OS refers to each existing window with a window handle, these window handles can be used to specify which window is of interest. The handle of the game window can be obtained using the following function:
 
-                <code>
-                    result = cv2.matchTemplate(img,temp,method)
-                </code>
-                
-                The function takes 3 inputs:
-            </p>
+                    <code>
+                        hWnd = win32gui.FindWindow(None, window_name)
+                    </code>
 
-            <ul>
-                <li>The image used to slide the template.</li>
-                <li>The template image</li>
-                <li>The method used to calculate the confidence values c.</li>
-            </ul>
-            <p>
-            There are 6 methods given by OpenCV. Depending on the application, one method may provide better results. The following table illustrates the algorithm behind the methods (taken from the OpenCV <a href="https://docs.opencv.org/4.x/df/dfb/group__imgproc__object.html#ga586ebfb0a7fb604b35a23d85391329be" class="project1-hyperlink" target="_blank">documentation</a>).
-            </p>
+                    The function <em>FindWindow</em> returns a value containing the handle of the window name. The handle can then be passed to different functions for manipulation.
 
+                    <code>[x1, y1, x2, y2] = win32gui.GetWindowRect(hWnd)</code>
+
+                    Calling the function <em>GetWindowRect(hWnd)</em> returns a tuple of coordinates corresponding to the top left and bottom right of the specific window.The width and height of the window can simply be calculated by taking the difference of the coordinates.
+
+                    $$w = y_{2}-y_{1},\ h=x_{2}-x_{1}$$
+
+                    The reason for calculating the width and height of the specified window is to create DC with the same dimensions where we can copy the graphical assets of the original DC to the newly created DC. This essentially functions as a screen grab. To create a DC, the following function is called to return a DC compatible with the window passed as input. 
+
+                    <code>
+                        CreateCompatibleDC(hDC)
+                    </code>
+
+                    Next, a Bitmap needs to be crafted and rendered onto the compatible DC. A Bitmap is what stores the image data and represents the visual image of the window. Calling the following function creates a Bitmap compatible with the inputted DC with width \(w\) and height \(h\).
+
+                    <code>
+                        CreateCompatibleBitmap(DC, w, h)
+                    </code>
+
+                    Once the DC and Bitmap has been created, the image data needs to be copied from the window of interest into the compatible DC created previously. There are several ways to do this step, two functions serve to "paint" the Bitmap of the original window to the compatible DC.
+
+                    <code>
+                        BitBlt(hDC, (x,y), (w, h), hDCsrc, (x1, y1), rop)
+                    </code>
+                    <code>
+                        windll.user32.PrintWindow(hWnd, hdcBlt, nFlags)
+                    </code>
+
+                    Both functions server our purpose, the first function <em>BitBlt()</em> was tried initially, however the returned image was a black screen. Different raster-operation codes were tested but returned similar results. The second function <em>PrintWindow()</em> is operationally similar, however this function returned the desired image output by trying different <em>nFlags</em> options. Documentation for both functions can be found online on the Microsoft <a href="https://learn.microsoft.com/en-us/windows/win32/api/" class="project1-hyperlink">Win32 API()</a> page. The last step is to convert the Bitmap into a numpy array and remove the alpha channel to avoid errors when passing the screen grab into <em>matchTemplate</em>.
+
+                    To get a continuous feed of images, the screen grab method is inputted into a while loop and called continuously until the loop is broken.
+                    <br>
+                    <br>
+                    To get a continuous feed of images, the screen grab method is inputted into a while loop and called continuously until the loop is broken.
+                </p>
+                <h2>
+                    Multi-Threading
+                </h2>
+                <p>
+                    It seems logically sound to create a set of instructions that takes the location values from the `cv.matchTemplate()` and use them to move the cursor over each of those positions and click, however, this introduces a problem. The clicking algorithm will need be inside the loop to receive the clicking positions but this results in the clicking algorithm starting every time the loop is ran and won't give the character a chance to gather all the resources before the loop ends. To get around this, it is possible to create a global variable that informs the program when the bot is running. The global variable will be a boolean object and set to `False` when the bot is not clicking and `True` when the bot is clicking. This would work, however it is never advised to mess around with global variables as they can render the code very messy.
+                    <br>
+                    <br>
+                    One way to get around this is by utilising multi-threading. This method allows the program to execute threads separately under one process. That allows the program to run a thread dedicated to clicking the returned coordinates. Once the locations of interest are returned, this information can be passed to the clicking thread and the bot can start clicking, once the bot is done clicking it will grab the latest locations and start clicking again. 
+                    <br>
+                    <br>
+                    There is a potential problem with this way of operating. If the thread happens to grab the location values while it is updating, it will cause complications. To prevent this, the three major processes of template matching, window capture and bot clicking will be put in their own thread and the return values will each be locked while updating.
+                </p>
+            </div>
         </div>
+        
     </body>
 </html>
