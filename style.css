@@ -130,9 +130,24 @@ ul {
 
 .about_container {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
 }
 
 .about_header {
     grid-column: 1 / span 2;
+}
+
+.about_description {
+    position: static;
+    margin: 3vw 30px 30px 30px;
+    text-align: justify;
+    width: 300px;
+}
+
+#about_image {
+    display: block;
+    width: 20rem;
+    margin-left: auto;
+    margin-top: 3vw;
+    margin-right: 0;
 }
