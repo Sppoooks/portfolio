@@ -24,7 +24,7 @@
     <body>
         <div class="project1-nav-bar">
             <h1>
-                OBJECT DETECTION
+                <a href="index.html">OBJECT DETECTION</a>
             </h1>
         </div>
         <div class="project1-body-container">
@@ -112,7 +112,7 @@
                     I have found that TM_CCOEFF_NORMED worked the best for my specific use case. Other methods have returned a black screen or the function returned many false positives.
                     <br>
                     <br>
-                    The `cv.matchTemplate` function returns a result matrix containing the confidence values, $c$, based on the method used. The result matrix $R$ is 2-Dimensional and has the same size as the image used for processing. The rows and columns of the result matrix dictate the $x$ and $y$ position of the confidence value on the image.
+                    The <em>cv.matchTemplate</em> function returns a result matrix containing the confidence values, \(c\), based on the method used. The result matrix \(R\) is 2-Dimensional and has the same size as the image used for processing. The rows and columns of the result matrix dictate the \(x\) and \(y\) position of the confidence value on the image.
                     <br>
                     $$\begin{align}
                     R_{y\times x}=\begin{bmatrix}
@@ -147,7 +147,7 @@
                     Creating an effective way to screen capture at a decent fps is simple if we are simply talking about grabbing the entire screen. Python modules such as mss and pyautogui allow for efficient screen capture as those modules are optimised for speed. The method utilised in this bot is to call the win32 API directly. Faster than pyautogui but slower than mss, this method allows for a somewhat efficient screen capture while providing another key benefit. Calling the windows API allows for the capturing of specific active windows.
                     <br>
                     <br>
-                    To start screen capturing with the win32 API, it is first important to understand some of the basics of the Windows OS. An application window is called a <a href="https://learn.microsoft.com/en-us/windows/win32/gdi/about-device-contexts" class="project1-hyperlink">Device Context</a> (DC), a DC is a structure that defines a set of graphic objects and their associated attributes, and the graphic modes that affect the output.
+                    To start screen capturing with the win32 API, it is first important to understand some of the basics of the Windows OS. An application window is called a <a href="https://learn.microsoft.com/en-us/windows/win32/gdi/about-device-contexts" class="project1-hyperlink" target="_blank">Device Context</a> (DC), a DC is a structure that defines a set of graphic objects and their associated attributes, and the graphic modes that affect the output.
                     <br>
                     <br>
                     The Windows OS refers to each existing window with a window handle, these window handles can be used to specify which window is of interest. The handle of the game window can be obtained using the following function:
@@ -185,7 +185,7 @@
                         windll.user32.PrintWindow(hWnd, hdcBlt, nFlags)
                     </code>
 
-                    Both functions server our purpose, the first function <em>BitBlt()</em> was tried initially, however the returned image was a black screen. Different raster-operation codes were tested but returned similar results. The second function <em>PrintWindow()</em> is operationally similar, however this function returned the desired image output by trying different <em>nFlags</em> options. Documentation for both functions can be found online on the Microsoft <a href="https://learn.microsoft.com/en-us/windows/win32/api/" class="project1-hyperlink">Win32 API()</a> page. The last step is to convert the Bitmap into a numpy array and remove the alpha channel to avoid errors when passing the screen grab into <em>matchTemplate</em>.
+                    Both functions server our purpose, the first function <em>BitBlt()</em> was tried initially, however the returned image was a black screen. Different raster-operation codes were tested but returned similar results. The second function <em>PrintWindow()</em> is operationally similar, however this function returned the desired image output by trying different <em>nFlags</em> options. Documentation for both functions can be found online on the Microsoft <a href="https://learn.microsoft.com/en-us/windows/win32/api/" class="project1-hyperlink" target="_blank">Win32 API()</a> page. The last step is to convert the Bitmap into a numpy array and remove the alpha channel to avoid errors when passing the screen grab into <em>matchTemplate</em>.
 
                     To get a continuous feed of images, the screen grab method is inputted into a while loop and called continuously until the loop is broken.
                     <br>
@@ -196,7 +196,7 @@
                     Multi-Threading
                 </h2>
                 <p>
-                    It seems logically sound to create a set of instructions that takes the location values from the `cv.matchTemplate()` and use them to move the cursor over each of those positions and click, however, this introduces a problem. The clicking algorithm will need be inside the loop to receive the clicking positions but this results in the clicking algorithm starting every time the loop is ran and won't give the character a chance to gather all the resources before the loop ends. To get around this, it is possible to create a global variable that informs the program when the bot is running. The global variable will be a boolean object and set to `False` when the bot is not clicking and `True` when the bot is clicking. This would work, however it is never advised to mess around with global variables as they can render the code very messy.
+                    It seems logically sound to create a set of instructions that takes the location values from the <em>cv.matchTemplate()</em> and use them to move the cursor over each of those positions and click, however, this introduces a problem. The clicking algorithm will need be inside the loop to receive the clicking positions but this results in the clicking algorithm starting every time the loop is ran and won't give the character a chance to gather all the resources before the loop ends. To get around this, it is possible to create a global variable that informs the program when the bot is running. The global variable will be a boolean object and set to <em>False</em> when the bot is not clicking and <em>True</em> when the bot is clicking. This would work, however it is never advised to mess around with global variables as they can render the code very messy.
                     <br>
                     <br>
                     One way to get around this is by utilising multi-threading. This method allows the program to execute threads separately under one process. That allows the program to run a thread dedicated to clicking the returned coordinates. Once the locations of interest are returned, this information can be passed to the clicking thread and the bot can start clicking, once the bot is done clicking it will grab the latest locations and start clicking again. 
