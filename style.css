@@ -22,7 +22,7 @@ p {
     font-family: "IBM Plex Mono";
     font-weight: 400;
     font-style: normal;
-    font-size: 10pt;
+    font-size: 1.4vw;
     margin: 0;
 }
 
@@ -139,21 +139,15 @@ ul {
 
 .about_description {
     position: static;
-    margin: 3vw 30px 30px 30px;
+    margin: 30px 30px 30px 30px;
     text-align: justify;
-    width: 30vw
+    width: 30vw;
+    height: 30vw;
 }
 
 #about_image {
-    display: block;
     width: 30vw;
     margin-left: auto;
     margin-top: 3vw;
     margin-right: 0;
-}
-
-@media screen and (width >= 2000px) {
-    p {
-        font-size: 12pt;
-    }
 }
