@@ -146,8 +146,14 @@ ul {
 
 #about_image {
     display: block;
-    width: 20rem;
+    width: 30vw;
     margin-left: auto;
     margin-top: 3vw;
     margin-right: 0;
+}
+
+@media screen and (min-width: 2000) {
+    p {
+        font-size: 12pt;
+    }
 }
