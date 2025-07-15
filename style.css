@@ -146,7 +146,12 @@ table, th, td{
 }
 
 .content_container {
+    display: block;
     position: relative;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 @keyframes fadeIn {
@@ -238,6 +243,7 @@ table, th, td{
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 90vw;
+        width: 100vw;
+        margin-top: 20vw;
     }
 }
