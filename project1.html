@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initla-scale=1"/>
@@ -22,12 +22,32 @@
         </script>
     </head>
     <body>
-        <div class="project1-nav-bar">
-            <h1>
-                <a href="index.html">OBJECT DETECTION</a>
-            </h1>
-        </div>
         <div class="project1-body-container">
+            <nav class="project1-nav-bar">
+                <h1 id="project1-home">
+                    <a href="index.html">HOME</a>
+                </h1>
+
+                <div class="homepage_project" id="homepage_project">
+                    
+                    <button onclick="toggle_dropdown()" class="project_button" id="project_button">PROJECTS</button>
+
+                        <div class="project_dropdown_content" id="project_dropdown_content">
+                            <a href="project1.html">OBJECT DETECTION</a>
+                        </div>
+                </div>
+
+                <div class="homepage_about" id="homepage_about">
+                    <a href="about.html">ABOUT ME</a>
+                </div>
+            </nav>
+            
+            <div>
+                <h1 id="project1-header">
+                    OBJECT DETECTION
+                </h1>
+            </div>
+        
             <div class="project1-content">
                 <h2>
                     Introduction
@@ -206,6 +226,5 @@
                 </p>
             </div>
         </div>
-        
     </body>
 </html>
