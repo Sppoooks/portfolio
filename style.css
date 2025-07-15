@@ -146,7 +146,7 @@ table, th, td{
 }
 
 .content_container {
-    position: static;
+    position: relative;
 }
 
 @keyframes fadeIn {
@@ -221,4 +221,23 @@ table, th, td{
 
 #project1-header {
     text-align: center;
+}
+
+@media screen and (width <= 900px) {
+
+    .homepage_container {
+        grid-template-columns: auto;
+
+    }
+
+    .homepage_navigation {
+        display: none;
+    }
+
+    .content_container {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90vw;
+    }
 }
