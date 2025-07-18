@@ -303,6 +303,7 @@ footer {
         width: 100%;
         position: fixed;
         top: 25px;
+        z-index: 1;
     }
 
     .homepage_navigation {
@@ -314,9 +315,11 @@ footer {
         opacity: 0%;
         background-color: white;
         transition: opacity 0.5s ease-in-out;
+        z-index: -1;
     }
 
     .homepage_navigation.active {
+        z-index: 1;
         opacity: 100%;
         transition-delay: 0.5s;
     }
@@ -325,9 +328,9 @@ footer {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 95vw;
-        margin-top: 30vw;
-        z-index: -1;
+        width: 95%;
+        margin-top: 25vh;
+        z-index: 0;
     }
 
     footer {
