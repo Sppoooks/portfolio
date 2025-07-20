@@ -36,7 +36,6 @@ p {
     font-size: 10pt;
     margin: 0;
     text-align: justify;
-    overflow: scroll;
 }
 
 a {
@@ -91,8 +90,14 @@ footer {
 
 #github-icon {
     display: block;
+    padding-top: 10px;
     width: 30px;
     float: right;
+}
+
+#footer-name {
+    display: inline-block;
+    padding-top: 10px;
 }
 
 .homepage_container {
@@ -222,22 +227,33 @@ footer {
     font-weight: 600;
 }
 
-.project1-nav-bar {
-    grid-row: 1 /span 2;
+.project1-home:hover {
+    font-weight: 600;
+}
+
+.project1-nav-container {
+    display: block;
+    position: fixed;
     font-size: 10pt;
+    top: 30px;
+    left: 30px;
 }
 
 .project1-body-container {
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: auto;
 }
 
 .project1-content {
     margin-left: auto;
     margin-right: auto;
-    width: 800px;
+    max-width: 800px;
     text-align: center;
     padding-bottom: 30px;
+}
+
+#project1-formula-buttons {
+    display: none;
 }
 
 .project1-image {
@@ -247,12 +263,13 @@ footer {
 
 #project1-rock-img {
     width: 100px;
+    height: auto;
     display: block;
     margin-right: auto;
     margin-left: auto;
 }
 
-#project1-header {
+#project1-header h1{
     text-align: center;
 }
 
@@ -301,8 +318,8 @@ footer {
     }
 }
 
-@media screen and (width <= 900px) {
-
+@media screen and (width <= 1100px) {
+    /*Home page mobile and table screen*/
     .homepage_container {
         grid-template-columns: auto;
     }
@@ -410,5 +427,81 @@ footer {
 
     .cross-line:last-child {
         transform: rotate(-45deg);
+    }
+
+    /*Project1 Mobile and tablet screen*/
+
+    code {
+        overflow-wrap: break-word;
+        margin: 20px 5px 20px 5px;
+    }
+
+    .project1-nav-container {
+        display: none;
+    }
+
+    .project1-body-container {
+        margin: 0;
+    }
+
+    .project1-content {
+        width: 100%;
+    }
+
+    .project1-content h2 {
+        font-size: 1.4em;
+    }
+
+    /* #project1-header {
+        position: sticky;
+        top: 20px;
+    } */
+
+    #project1-header h1{
+        width: auto;
+        font-size: 1.6em;
+        width: auto;
+        text-align: center;
+    }
+
+    #project1-table {
+        display: none;
+    }
+
+    #project1-formula-buttons {
+        display: block;
+        
+    }
+
+    .mathjax {
+        font-size: 0.8em;
+    }
+
+    .project1-formula-button {
+        display: inline-block;
+        background-color: white;
+        padding: 10px 0 10px 0;
+        width: 200px;
+        margin-bottom: 5px;
+        border: 2px solid;
+        font-family: "IBM Plex Mono", monospace;
+    }
+
+    .project1-formula-button:hover {
+        cursor: pointer;
+    }
+
+    .project1-formula-content {
+        max-height: 0px;
+        font-size: 0.75em;
+        overflow-wrap: break-word;
+        overflow: hidden;
+        transition: 1s ease;
+    }
+
+    .show_formula {
+        max-height: 200px;
+        margin-top: 15px;
+        margin-bottom: 20px;
     }
 }

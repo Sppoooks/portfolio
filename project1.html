@@ -23,10 +23,9 @@
     </head>
     <body>
         <div class="project1-body-container">
-            <nav class="project1-nav-bar">
-                <h1 id="project1-home">
-                    <a href="index.html">HOME</a>
-                </h1>
+            <nav class="project1-nav-container">
+
+                <div class="project1-home"><a href="index.html">HOME</a></div>
 
                 <div class="homepage_project" id="homepage_project">
                     
@@ -42,8 +41,8 @@
                 </div>
             </nav>
             
-            <div>
-                <h1 id="project1-header">
+            <div id="project1-header">
+                <h1>
                     OBJECT DETECTION
                 </h1>
             </div>
@@ -60,7 +59,7 @@
                     Aim
                 </h2>
                 <p>
-                    The purpose of this bot is to detect all the <em>minable</em> ores on screen and mine them completely autonomously. The user requirement is only to start the bot and bring the window of interest to the front.
+                    The purpose of this bot is to detect all the <em>mineable</em> ores on screen and mine them completely autonomously. The user requirement is only to start the bot and bring the window of interest to the front.
                 </p>
 
                 <h2>
@@ -95,9 +94,11 @@
                 There are 6 methods given by OpenCV. Depending on the application, one method may provide better results. The following table illustrates the algorithm behind the methods (taken from the OpenCV <a href="https://docs.opencv.org/4.x/df/dfb/group__imgproc__object.html#ga586ebfb0a7fb604b35a23d85391329be" class="project1-hyperlink" target="_blank">documentation</a>).
                 <br>
                 <br>
-                $$R(x,y)=\sum_{x',y'}^{}(T'(x',y')-I'(x+x',y+y'))^2$$
+                <span class="mathjax">
+                    $$R(x,y)=\sum_{x',y'}^{}(T'(x',y')-I'(x+x',y+y'))^2$$
+                </span>
                 </p>
-                <table>
+                <table id="project1-table">
                     <tr>
                         <th>Template Match Methods</th>
                         <th>Formula</th>
@@ -127,6 +128,33 @@
                         <td>$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))}{\sum_{x',y'}^{}T'(x','y)^2\cdot \sum_{x',y'}^{}I'(x+x',y+y')^2}$$</td>
                     </tr>
                 </table>
+
+                <div id="project1-formula-buttons">
+                    
+                    <button class="project1-formula-button" onclick="toggle_formula_dropdown('tmsqdiff')">
+                        TM_SQDIFF
+                    </button>
+
+                        <div class="project1-formula-content" id="tmsqdiff">$$R(x,y)=\sum_{x',y'}^{}(T(x',y')-I(x+x',y+y'))^2$$</div>
+
+                    <button class="project1-formula-button" onclick="toggle_formula_dropdown('tmsqdiffnormed')">
+                        TM_SQDIFF_NORMED
+                    </button>
+                        <div class="project1-formula-content" id="tmsqdiffnormed">$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')-I(x+x',y+y'))^2}{\sum_{x',y'}^{}T(x','y)^2\cdot \sum_{x',y'}^{}I(x+x',y+y')^2}$$</div>
+
+                    <button class="project1-formula-button" onclick="toggle_formula_dropdown('tmccorr')">
+                        TM_CCORR
+                    </button>
+                        <div class="project1-formula-content" id="tmccorr">$$R(x,y)=\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))$$</div>
+
+                    <button class="project1-formula-button" onclick="toggle_formula_dropdown('tmccorrnormed')">TM_CCORR_NORMED</button>
+                        <div class="project1-formula-content" id="tmccorrnormed">$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))}{\sum_{x',y'}^{}T(x','y)^2\cdot \sum_{x',y'}^{}I(x+x',y+y')^2}$$</div>
+                    <button class="project1-formula-button" onclick="toggle_formula_dropdown('tmccoeff')">TM_CCOEFF</button>
+                        <div class="project1-formula-content" id="tmccoeff">$$R(x,y)=\sum_{x',y'}^{}(T'(x',y')\cdot I'(x+x',y+y'))^2$$</div>
+                    <button class="project1-formula-button" onclick="toggle_formula_dropdown('tmccoeffnormed')">TM_CCOEFF_NORMED</button>
+                        <div class="project1-formula-content" id="tmccoeffnormed">$$R(x,y)=\frac{\sum_{x',y'}^{}(T(x',y')\cdot I(x+x',y+y'))}{\sum_{x',y'}^{}T'(x','y)^2\cdot \sum_{x',y'}^{}I'(x+x',y+y')^2}$$</div>
+                </div>
+
                 <p>
                     <br>
                     I have found that TM_CCOEFF_NORMED worked the best for my specific use case. Other methods have returned a black screen or the function returned many false positives.
@@ -134,26 +162,29 @@
                     <br>
                     The <em>cv.matchTemplate</em> function returns a result matrix containing the confidence values, \(c\), based on the method used. The result matrix \(R\) is 2-Dimensional and has the same size as the image used for processing. The rows and columns of the result matrix dictate the \(x\) and \(y\) position of the confidence value on the image.
                     <br>
-                    $$\begin{align}
-                    R_{y\times x}=\begin{bmatrix}
-                    c_{11} & c_{12} & \dots & c_{1x} \\
-                    c_{21} & c_{22} & \dots & c_{2x} \\
-                    \vdots & \vdots & \ddots & \vdots \\
-                    c_{y1} & c_{y2} & \dots & c_{yx}
-                    \end{bmatrix} &  & c \in \mathbb{R}^+, 0\leq c \leq 1
-                    \end{align}$$
+                    <span class="mathjax">
+                        $$\begin{align}
+                        R_{y\times x}=\begin{bmatrix}
+                        c_{11} & c_{12} & \dots & c_{1x} \\
+                        c_{21} & c_{22} & \dots & c_{2x} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        c_{y1} & c_{y2} & \dots & c_{yx}
+                        \end{bmatrix}&c \in \mathbb{R}^+, 0\leq c \leq 1
+                        \end{align}$$
+                    </span>
+                    
                     <br>
                     Once the result matrix obtained, the locations of the best matches can be determined.
                 </p>
-                <img src="images/Screenshot.png" alt="Image of game" class="project1-image">
+                <img src="images/Screenshot.png" alt="Image of game" class="project1-image" width="100%" height="auto">
                 <p>
                     To help illustrate the process of template matching, an example screenshot is show below and passed through the template matching algorithm.
                 </p>
-                <img src="images/rock.png" alt="game ore" width="50px" class="project1-image" id="project1-rock-img">
+                <img src="images/rock.png" alt="game ore" class="project1-image" id="project1-rock-img">
                 <p>
                     The image used as the template is a cropped image of the ore obtained from the screenshot.
                 </p>
-                <img src="images/result.png" alt="matching template result" class="project1-image">
+                <img src="images/result.png" alt="matching template result" class="project1-image" width="100%" height="auto">
                 <p>
                     The output of the template matching algorithm is saved into the result matrix and each confidence value is converted into pixel brightness. The confidence value is proportional to the brightness of the pixel, therefore the brighter a pixel is, the more likely that area of the image contains the template. This is displayed in the grayscale image shown above. The bright spots indicate a high probability of matching at that specific location.
                     <br>
@@ -226,9 +257,9 @@
                 </p>
             </div>
         </div>
-        
+
         <footer>
-            <span>THOMAS WAN</span>
+            <span id="footer-name">THOMAS WAN</span>
             <span id="github-icon"><a href="https://github.com/Sppoooks" target="_blank"><img src="images/github-mark.svg" alt="github"></a></span>
         </footer>
     </body>
