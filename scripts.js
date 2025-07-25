@@ -19,7 +19,6 @@ function fade_animation() {
 burger_menu.addEventListener("click", fade_animation)
 
 // formula buttons in project1.html
-
 function toggle_formula_dropdown(button) {
     document.getElementById(button).classList.toggle("show_formula")
 }

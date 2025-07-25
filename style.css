@@ -80,8 +80,9 @@ footer {
     font-style: normal;
     display: block;
     bottom: 0;
-    left: 20px;
-    right: 30px;
+    left: 0;
+    right: 0;
+    padding: 20px 20px 0 20px;
     height: 50px;
     position: fixed;
     text-align: left;
@@ -90,26 +91,18 @@ footer {
 
 #github-icon {
     display: block;
-    padding-top: 10px;
     width: 30px;
     float: right;
 }
 
 #footer-name {
     display: inline-block;
-    padding-top: 10px;
 }
 
 .homepage_container {
     display: grid;
     margin: 0pt;
-    grid-template-columns: 230px auto;
-}
-
-.homepage_header {
-    grid-column: 1 / span 2;
-    height: 75px;
-    width: 95vw;
+    grid-template-columns: auto;
 }
 
 .project_button {
@@ -120,6 +113,7 @@ footer {
     font-size: 10pt;
     cursor: pointer;
     display: inline-block;
+    appearance: none;
 }
 
 .project_button_click {
@@ -128,6 +122,16 @@ footer {
 
 .project_button:hover{
     font-weight: 600;
+}
+
+.navigation {
+    font-size: 10pt;
+    font-family: semplicitapro, sans-serif;
+    font-weight: 400;
+    position: fixed;
+    width: 200px;
+    left: 20px;
+    top: 100px;
 }
 
 .homepage_project {
@@ -149,12 +153,6 @@ footer {
 
 .project_dropdown_content a{
     display: block;
-}
-
-.homepage_navigation {
-    font-size: 10pt;
-    font-family: semplicitapro, sans-serif;
-    font-weight: 400;
 }
 
 .homepage_about:hover {
@@ -252,6 +250,10 @@ footer {
     padding-bottom: 30px;
 }
 
+#project1-header h1{
+    text-align: center;
+}
+
 #project1-formula-buttons {
     display: none;
 }
@@ -267,10 +269,6 @@ footer {
     display: block;
     margin-right: auto;
     margin-left: auto;
-}
-
-#project1-header h1{
-    text-align: center;
 }
 
 @keyframes fadeRotate1 {
@@ -319,7 +317,17 @@ footer {
 }
 
 @media screen and (width <= 1100px) {
-    /*Home page mobile and table screen*/
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    footer {
+        left: 0;
+        right: 0;
+    }
+
+    /*Home page mobile and tablet screen*/
     .homepage_container {
         grid-template-columns: auto;
     }
@@ -331,7 +339,7 @@ footer {
         z-index: 1;
     }
 
-    .homepage_navigation {
+    .navigation {
         position: fixed;
         left: 25px;
         top: 80px;
@@ -343,7 +351,7 @@ footer {
         z-index: -1;
     }
 
-    .homepage_navigation.active {
+    .navigation.active {
         z-index: 1;
         opacity: 100%;
         transition-delay: 0.5s;
@@ -361,10 +369,10 @@ footer {
     .burger-menu {
         display: block;
         position: fixed;
-        width: 50px;
-        height: 35px;
-        top: 30px;
-        right: 30px;
+        width: 30px;
+        height: 30px;
+        top: 25px;
+        right: 20px;
         z-index: 2;
     }
 
@@ -391,13 +399,13 @@ footer {
 
     .burger-icon {
         position: absolute;
-        left: 5px;
+        left: 0px;
         transition: opacity 0.5s ease-in-out;
     }
 
     .cross-icon {
         position: absolute;
-        left: 5px;
+        left: 0px;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
     }
@@ -406,18 +414,18 @@ footer {
         display: block;
         position: relative;
         background-color: black;
-        width: 40px;
-        height: 5px;
-        margin: 0 auto 10px auto;
+        width: 20px;
+        height: 3px;
+        margin: 0 auto 5px auto;
     }
 
     .cross-line {
         display: block;
         position: absolute;
-        top: 15px;
+        top: 5px;
         background-color: black;
-        width: 40px;
-        height: 5px;
+        width: 20px;
+        height: 3px;
         transform-origin: center;
     }
 
@@ -457,11 +465,13 @@ footer {
         top: 20px;
     } */
 
+    #project1-header {
+        width: auto;
+        width: auto;
+    }
+
     #project1-header h1{
-        width: auto;
-        font-size: 1.6em;
-        width: auto;
-        text-align: center;
+        text-align: left;
     }
 
     #project1-table {
