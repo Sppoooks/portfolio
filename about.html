@@ -7,6 +7,8 @@
 
         <link rel="stylesheet" href="style.css">
 
+        <script defer src="scripts.js"></script>
+
         <!--embedding IMB plex mono font from google fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,30 +16,64 @@
     </head>
 
     <body>
-        <div class="about_container" id="about_container">
-            <div class="about_header" id="about_header">
-                <h1>
-                    <a href="index.html">HOME</a>
-                </h1>
+        <header class="header">
+            <h1>
+                ABOUT ME
+            </h1>
+        </header>
+
+        <nav class="navigation" id="homepage_navigation">
+
+            <div class="project1-home"><a href="index.html">HOME</a></div>
+
+            <div class="project_dropdown" id="homepage_project">
+
+                <button onclick="toggle_dropdown()" class="project_button" id="project_button">PROJECTS</button>
+
+                    <div class="project_dropdown_content" id="project_dropdown_content">
+                        <a href="project1.html">OBJECT DETECTION</a>
+                    </div>
             </div>
+
+            <div class="homepage_about" id="homepage_about">
+                <a href="about.html">ABOUT ME</a>
+            </div>
+
+        </nav>
+
+        <div id="burger-background">
+        </div>
+        
+        <div class="burger-menu" id="burger-menu">
+            
+            <div class="burger-icon">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <div class="cross-icon">
+                <div class="cross-line"></div>
+                <div class="cross-line"></div>
+            </div>
+        </div>
+
+        <div class="about_container" id="about_container">
 
             <div class="image">
                 <img src="images/about_image.png" alt="Image of the pacific" id="about_image">
             </div>
 
-            <div>
-                <div class="about_description" id="about_description">
-                    <p id="about_paragraph">
-                        A mechanical engineer currently farming pearls in the middle of the pacific.
-                        <br>
-                        <br>
-                        I come from Tahiti, a small island with a population of 280,000 people.
-                        <br>
-                        <br>
-                        Currently, I work for my family business where I get to apply engineering principles to real world processes. 
-                        In my free time I learn to code and play around with electronics and mechanical systems.
-                    </p>
-                </div>
+            <div class="about_description" id="about_description">
+                <p id="about_paragraph">
+                    A mechanical engineer currently farming pearls in the middle of the pacific.
+                    <br>
+                    <br>
+                    I come from Tahiti, a small island with a population of 280,000 people.
+                    <br>
+                    <br>
+                    Currently, I work for my family business where I get to apply engineering principles to real world processes. 
+                    In my free time I learn to code and play around with electronics and mechanical systems.
+                </p>
             </div>
             
         </div>
