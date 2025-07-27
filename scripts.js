@@ -18,9 +18,11 @@ function fade_animation() {
     nav.classList.toggle("active");
 
     if (!burger_background.classList.contains("active")) {
+        burger_background.style.transitionDelay = "0s";
         burger_background.classList.add("active");
     }
     else {
+        burger_background.style.transitionDelay = "0.5s";
         burger_background.classList.remove("active");
     }
 }
