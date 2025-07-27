@@ -14,14 +14,20 @@ function toggle_dropdown() {
 }
 
 function fade_animation() {
-    burger_menu.classList.toggle("active")
-    nav.classList.toggle("active")
-    burger_background.classList.toggle("active")
+    burger_menu.classList.toggle("active");
+    nav.classList.toggle("active");
+
+    if (!burger_background.classList.contains("active")) {
+        burger_background.classList.add("active");
+    }
+    else {
+        burger_background.classList.remove("active");
+    }
 }
 
 burger_menu.addEventListener("click", fade_animation)
 
 // formula buttons in project1.html
 function toggle_formula_dropdown(button) {
-    document.getElementById(button).classList.toggle("show_formula")
+    document.getElementById(button).classList.toggle("show_formula");
 }
