@@ -23,6 +23,14 @@ h2 {
     margin-bottom: 5px;
 }
 
+h3 {
+    text-align: left;
+    font-family: semplicitapro, sans-serif;
+    font-style:normal;
+    font-weight: 600;
+    font-size: 20pt;
+}
+
 img {
     width: 100%;
     display: block;
@@ -188,9 +196,15 @@ footer {
     -ms-zoom-animation: fadeIn 3s;
 }
 
+.thumbnail_header h3{
+    text-align: center;
+    font-family: "IBM Plex Mono", monospace;
+}
+
 .content_container {
     display: block;
     position: relative;
+    padding-top: 100px;
     width: 60vw;
     margin-left: auto;
     margin-right: auto;
@@ -278,8 +292,8 @@ footer {
     margin-right: auto;
     max-width: 800px;
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     z-index: 0;
 }
 
@@ -349,6 +363,9 @@ footer {
         margin-top: 20vh;
     }
 
+    .thumbnail_header h3 {
+        font-size: 1.2em;
+    }
     .burger-menu {
         display: block;
         position: fixed;
