@@ -6,6 +6,8 @@ const burger_menu = document.getElementById("burger-menu");
 
 const nav = document.getElementById("homepage_navigation");
 
+const burger_background = document.getElementById("burger-background");
+
 function toggle_dropdown() {
     dropdown.classList.toggle("show");
     button.classList.toggle("project_button_click");
@@ -14,6 +16,7 @@ function toggle_dropdown() {
 function fade_animation() {
     burger_menu.classList.toggle("active")
     nav.classList.toggle("active")
+    burger_background.classList.toggle("active")
 }
 
 burger_menu.addEventListener("click", fade_animation)
