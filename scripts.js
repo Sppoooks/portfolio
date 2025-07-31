@@ -68,7 +68,7 @@ function generate_char_array() {
 	let char_array_list = [];
 
 	for (let i=0; i<decrypt_element_length; i++) {
-		let int_array = generate_array(4, 30);
+		let int_array = generate_array(10, 50);
 		let char_array = int_array.map(int_array => character_options[int_array]); // Turn index array to corresponding string array
 		char_array.push(decrypt_element.innerHTML[i])
 		char_array_list.push(char_array);
@@ -78,7 +78,7 @@ function generate_char_array() {
 }
 
 let char_array = generate_char_array();
-const delay = 100; // milliseconds
+const delay = 50; // milliseconds
 const max_length = Math.max(...char_array.map(arr => arr.length));
 let word_array = [];
 

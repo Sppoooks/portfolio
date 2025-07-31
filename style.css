@@ -128,6 +128,7 @@ footer {
 }
 
 .project_button {
+	-webkit-appearance: none;
     padding: 0;
     border: none;
     background-color: transparent;
@@ -486,6 +487,7 @@ footer {
     }
 
     .project1-formula-button {
+	-webkit-appearance: none;
         display: inline-block;
         background-color: white;
         padding: 10px 0 10px 0;
