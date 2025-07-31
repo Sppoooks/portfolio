@@ -200,6 +200,12 @@ footer {
 .thumbnail_header h3{
     text-align: center;
     font-family: "IBM Plex Mono", monospace;
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-zoom-animation: fadeIn 3s;
+
 }
 
 .content_container {

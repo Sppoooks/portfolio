@@ -44,7 +44,6 @@ function toggle_formula_dropdown(button) {
 //change character to correct character
 const character_options = "ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789~!@#$%^&*-+=";
 const decrypt_element_length = decrypt_element.innerHTML.length;
-
 // Generate an array containing a a random integer from a uniform distribution
 // The array is of random length
 // The purpose for the array is provide a set of numbers assigned to the set of character options
@@ -68,7 +67,7 @@ function generate_char_array() {
 	let char_array_list = [];
 
 	for (let i=0; i<decrypt_element_length; i++) {
-		let int_array = generate_array(10, 50);
+		let int_array = generate_array(10, 40);
 		let char_array = int_array.map(int_array => character_options[int_array]); // Turn index array to corresponding string array
 		char_array.push(decrypt_element.innerHTML[i])
 		char_array_list.push(char_array);
