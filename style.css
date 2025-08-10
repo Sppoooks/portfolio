@@ -47,6 +47,8 @@ p {
 }
 
 a {
+    color: inherit;
+    -webkit-text-fill-color: inherit;
     text-decoration: none;
 }
 
