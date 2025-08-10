@@ -39,9 +39,9 @@ function toggle_formula_dropdown(button) {
 // Decryption effect
 // The function should take a string and transform it into another string one random character at a time
 // For example HwidjcIEjdw --> Hello World
-//get length of input string
-//get a random inde of the string character
-//change character to correct character
+// get length of input string
+// get a random inde of the string character
+// change character to correct character
 const character_options = "ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789~!@#$%^&*-+=";
 const decrypt_element_length = decrypt_element.innerHTML.length;
 // Generate an array containing a a random integer from a uniform distribution

@@ -28,7 +28,7 @@ h3 {
     font-family: semplicitapro, sans-serif;
     font-style:normal;
     font-weight: 600;
-    font-size: 20pt;
+    font-size: 24pt;
 }
 
 img {
@@ -199,7 +199,10 @@ footer {
 
 .thumbnail_header h3{
     text-align: center;
+    font-size: 24pt;
     font-family: "IBM Plex Mono", monospace;
+    margin-top: 10px;
+    margin-bottom:10px;
     animation: fadeIn 3s;
     -webkit-animation: fadeIn 3s;
     -moz-animation: fadeIn 3s;
@@ -362,15 +365,31 @@ footer {
 
     .content_container {
         display: block;
+	padding-top: 0;
         margin-left: auto;
         margin-right: auto;
+	height: 90vh;
         width: 95%;
-        margin-top: 20vh;
+        margin-top: auto;
+	margin-bottom: auto;
     }
 
     .thumbnail_header h3 {
         font-size: 1.2em;
     }
+
+    .thumbnail_header {
+	position: absolute;
+	top: 30%;
+	width: 100%;
+    }
+
+    .thumbnail_image {
+	position: absolute;
+	top: 35%;
+	width: 100%;
+    }
+
     .burger-menu {
         display: block;
         position: fixed;
@@ -493,7 +512,7 @@ footer {
     }
 
     .project1-formula-button {
-	-webkit-appearance: none;
+	    -webkit-appearance: none;
         display: inline-block;
         background-color: white;
         padding: 10px 0 10px 0;
