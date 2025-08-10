@@ -50,8 +50,10 @@ a {
     text-decoration: none;
 }
 
-a:link, a:visited, a:active {
-    color:black
+a:link, a:visited, a:active , a.button{
+    color:black;
+    -webkit-text-fill-color: black;
+
 }
 
 ul {
